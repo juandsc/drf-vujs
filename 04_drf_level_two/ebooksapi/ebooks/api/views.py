@@ -8,13 +8,15 @@ from ebooks.models import Ebook, Review
 from ebooks.api.serializers import EbookSerializer, ReviewSerializer
 from ebooks.api.permissions import (
     IsAdminUserOrReadOnly, IsReviewAuthorOrReadOnly
-)
+) # custom permission rules
+from ebooks.api.pagination import SmallSetPagination # custom pagination rules
 
 
 class EbookListCreatedAPIView(generics.ListCreateAPIView):
-    queryset = Ebook.objects.all()
+    queryset = Ebook.objects.all().order_by('-id')
     serializer_class = EbookSerializer
     permission_classes = [IsAdminUserOrReadOnly]
+    pagination_class = SmallSetPagination
 
 
 class EbookDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
