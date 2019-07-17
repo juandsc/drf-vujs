@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Class and Style Binding</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="row justify-content-center mt-3">
+            <div class="circle" 
+                    v-bind:style="{ backgroundColor: color }"></div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <input type="text" v-model="color">
+        </div>
+        <div class="row justify-content-center mt-3">
+            <p>Color Data: {{ color }}</p>
+        </div>
+        <hr>
+        <div class="row justify-content-center mt-3">
+            <div class="col-5">
+                <p>Escribe un mensaje!</p>
+                <textarea class="form-control" 
+                        v-model="text"
+                        placeholder="escribe algo!" 
+                        cols="60" 
+                        rows="5">
+                </textarea>
+            </div>
+            <div class="col-5">
+                <p>Mensaje</p>
+                <p>{{ text }}</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row justify-content-center mt-3">
+            <input type="checkbox" id="checkbox" v-model="checked">
+            <label for="checkbox">&nbsp;&nbsp; Value: {{ checked }}</label>
+        </div>
+        <br>
+        <div class="row justify-content-center mt-3">
+            <select v-model="city">
+                <option>Titiribi</option>
+                <option>Puerto Escondido</option>
+                <option>Mojo Quemao</option>
+                <option>Iscuando</option>
+                <option>Saldaña</option>
+            </select>
+            <span>&nbsp;&nbsp;Ciudad: {{ city }}</span>
+        </div>
+        <hr>
+        <p v-if="errors" class="mt-2" style="text-align: center">{{ errors }}</p>
+        <div class="row justify-content-center mt-3">
+            <div class="col-10">
+                <form @submit.prevent="onSubmit">
+                    <div class="form-group">
+                        <label for="commentText">Publica un comentario:</label>
+                        <textarea class="form-control" 
+                                v-model="comment"
+                                id="commentText" 
+                                cols="80" 
+                                rows="5">
+                        </textarea>
+                    </div>
+                    <button class="btn btn-sm btn-primary" type="submit">Publicar</button>
+                </form>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-10">
+                <div class="card mt-1" v-for="comment in comments">
+                    <div class="card-body">{{ comment }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

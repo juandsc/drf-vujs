@@ -4,28 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Class and Style Binding</title>
+    <title>List Rendering</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-        .circle {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-        }
-        .square {
-            width: 250px;
-            height: 250px;
-        }
-    </style>
 </head>
 <body>
     <div id="app">
-        <div class="row justify-content-center mt-3">
-            <div v-bind:class="{ circle: flag, square: !flag }" 
-                    v-bind:style="styleObject"></div>
-        </div>
-        <div class="row justify-content-center mt-3">
-            <button class="btn btn-success" @click="changeShape">Change Shape</button>
+        <p>Numeros del 1 al 10</p>
+        <p v-for="number in 10">{{ number }}</p>
+        <hr>
+        <h1>Lista de Usuarios</h1>
+        <div class="card" v-for="user in users" :key="user.id">
+            <div class="card-body">
+                <p><strong>Nombre:</strong> {{ user.name }}</p>
+                <p><strong>Profesion:</strong> {{ user.profession }}</p>
+            </div>
         </div>
     </div>
 
