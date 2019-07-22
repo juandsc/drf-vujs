@@ -8,7 +8,10 @@
 </head>
 <body>
     <div id="app">
-        <task-list :tasks="tasks"  @submit-task="addNewTask"></task-list>
+        <task-list :tasks="tasks" 
+                :remaining="taskCount" 
+                @submit-task="addNewTask">
+        </task-list>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
