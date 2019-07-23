@@ -22,11 +22,11 @@ Vue.component("task-list", {
                 this.new_task = null;
                 this.error = null;
             } else {
-                this.error = "Ingrese una nueva tarea!";
+                this.error = "El campo no puede estar vacio!";
             }
         },
-        removeTask(keyToRemove) {
-            this.$emit("remove-task", keyToRemove);
+        removeTask(task) {
+            this.$emit("remove-task", task);
         },
     },
     template: `
@@ -42,8 +42,15 @@ Vue.component("task-list", {
                     v-for="(task, index) in tasks" 
                     :task="task" 
                     :key="index">
-                {{ task }}
+                <div class="alert alert-success">
+                    {{ task }}
+                    <button type="button" class="close no-outline" @click="removeTask(task)">
+                        <span>&times;</span>
+                    </button>
+                </div>
             </div>
+            <p v-if="error">{{ error }}</p>
+            <p v-if="remaining === 0">Añade una nueva tarea a tu lista de cosas por hacer!</p>
         </div>
     `
 })

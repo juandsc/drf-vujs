@@ -1,0 +1,8 @@
+.no-outline {
+    outline: 0 !important;
+}
+
+.no-outline:not(:disabled):not(.disable):focus {
+    color: #6c757d;
+    opacity: 1;
+}
